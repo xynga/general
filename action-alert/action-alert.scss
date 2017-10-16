@@ -1,0 +1,137 @@
+$gray-lightest: #e0e0e0 !default;
+$gray-lighter: #c0c0c0 !default;
+$gray-light: #a0a0a0 !default;
+$gray-medium: #808080 !default;
+$gray-dark: #606060 !default;
+$gray-darker: #404040 !default;
+$gray-darkest: #202020 !default;
+
+$white: #ffffff !default;
+$slate: #808080 !default;
+$black: #000000 !default;
+
+$rem: .2rem;
+$rem-scalar: 1.7099758;
+
+$rem-smallest: $rem;
+$rem-smaller: $rem-smallest * $rem-scalar;
+$rem-small: $rem-smaller * $rem-scalar;
+$rem-medium: $rem-small * $rem-scalar; // must equal 1 rem
+$rem-large: $rem-medium * $rem-scalar;
+$rem-larger: $rem-large * $rem-scalar;
+$rem-largest: $rem-larger * $rem-scalar;
+
+
+$font-family: 'Gotham SSm A', 'Gotham SSm B', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$font-smallest: $rem-smallest;
+$font-smaller: $rem-smaller;
+$font-small: $rem-small;
+$font-medium: 14px; // font sizes scaled from this when the <html> font size is set to this variable
+$font-large: $rem-large;
+$font-larger: $rem-larger;
+$font-largest: $rem-largest;
+
+//@debug $font-smallest $font-smaller $font-small $font-medium $font-large $font-larger $font-largest;
+
+$grey-lightest: #e0e0e0 !default;
+$grey-lighter: #c0c0c0 !default;
+$grey-light: #a0a0a0 !default;
+$grey-medium: #808080 !default;
+$grey-dark: #606060 !default;
+$grey-darker: #404040 !default;
+$grey-darkest: #202020 !default;
+
+$white: #ffffff !default;
+$slate: #808080 !default;
+$black: #000000 !default;
+
+$brand-primary-lightest: #e0eaf4 !default;
+$brand-primary-lighter: #e0eaf4 !default;
+$brand-primary-light: #adc8e2 !default;
+$brand-primary: #266eb3 !default;
+$brand-primary-dark: #003d7c !default;
+$brand-primary-darker: #0a2e50 !default;
+$brand-primary-darkest: #0a2e50 !default;
+
+$brand-secondary-lightest: #fbfeeb !default;
+$brand-secondary-lighter: #fbfeeb !default;
+$brand-secondary-light: #f5febf !default;
+$brand-secondary: #d4f024 !default;
+$brand-secondary-dark: #c0d82f !default;
+$brand-secondary-darker: #aabd30 !default;
+$brand-secondary-darkest: #aabd30 !default;
+
+$border-separator: 1px solid $grey-lightest !default;
+$border: 1px solid $grey-lighter !default;
+$border-control: 1px solid $brand-secondary-dark !default;
+$border-information: 1px solid $grey-dark !default;
+
+$accent-warning-light: #fff7c4;
+$accent-warning: #ffe329;
+$accent-warning-dark: #eeca00;
+
+$accent-success-light: $brand-secondary;
+$accent-success: $brand-secondary-dark;
+$accent-success-dark: $brand-secondary-darker;
+
+$action-alert-number-font-size: $font-larger !default;
+$action-alert-border: $border !default;
+$action-alert-background: $white !default;
+
+$accent-alert-light: #ffe6e7; // accent-error
+$accent-alert: #d1373b; // accent-error
+$accent-alert-dark: #aa292d; // accent-error
+
+$border-success: 1px solid $accent-success !default;
+$border-warning: 1px solid $accent-warning !default;
+$border-alert: 1px solid $accent-alert !default;
+
+
+.container {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 87.5%;
+  color: #131313;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  padding-top: 100px;
+  max-width: 120px;
+
+  .composite.image {
+    position: absolute;
+    transform: translate(7px, -100px);
+
+    .underlay {
+      position: absolute;
+      padding-top: 15px;
+    }
+
+    .overlay {
+      position: absolute;
+      border-radius: 50%;
+      border: $action-alert-border;
+      width: 40px;
+      height: 30px;
+      padding-top: 10px;
+      line-height: 0;
+      text-align: center;
+      background-color: $action-alert-background;
+      transform: translateX(55px);
+    }
+  }
+
+  .number {
+    font-size: $action-alert-number-font-size;
+    text-align: center;
+  }
+
+  .link {
+    word-spacing: normal;
+    letter-spacing: normal;
+    text-align: center;
+    text-decoration: none;
+    color: #266eb3;
+  }
+
+}
+

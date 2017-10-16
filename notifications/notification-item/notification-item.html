@@ -1,0 +1,40 @@
+<div class="notification-item"
+  [@enterLeave]="item.state"
+  [class]="theClass"
+
+  [ngClass]="{
+    'notification-item--alert': item.type === 'alert',
+    'notification-item--error': item.type === 'error',
+    'notification-item--warn': item.type === 'warn',
+    'notification-item--success': item.type === 'success',
+    'notification-item--info': item.type === 'info',
+    'rtl-mode': rtl
+  }"
+
+  (mouseenter)="onEnter()"
+  (mouseleave)="onLeave()">
+
+    <button class="notification-item__close" button-close (click)="remove()">Close</button>
+
+    <div class="notification-item__content">
+      <div *ngIf="!item.html">
+        <strong *ngIf="item.title" class="notification-item__title">{{item.title}}: </strong>
+        <span [innerHTML]="item.content"></span>
+      </div>
+      <div *ngIf="item.html" [innerHTML]="item.html"></div>
+    </div>
+
+
+    <div class="notification-item__progress" *ngIf="showProgressBar">
+      <span [ngStyle]="{'width': progressWidth + '%'}"></span>
+    </div>
+
+    <div *ngIf="item.override?.footnote"
+      [innerHTML]="item.override.footnote"
+      class="notification-item__footnote">
+    </div>
+
+  <div class="sn-progress-loader" *ngIf="showProgressBar">
+    <span [ngStyle]="{'width': progressWidth + '%'}"></span>
+  </div>
+</div>

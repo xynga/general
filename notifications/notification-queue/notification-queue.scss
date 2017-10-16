@@ -1,0 +1,15 @@
+.notification-wrapper {
+  position: relative;
+  z-index: 1000;
+}
+
+.notification-viewport {
+  position: relative;
+  clear: both;
+  width: 100%;
+}
+
+.notification-close {
+  position: absolute;
+
+}
