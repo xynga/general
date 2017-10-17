@@ -1,5 +1,5 @@
 {
-  "name": "general",
+  "name": "xynga-general",
   "version": "1.0.0",
   "description": "Holds all the components classified under the label \"General\"",
   "main": "index.js",
