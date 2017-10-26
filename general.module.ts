@@ -14,7 +14,7 @@ import {CodeHighlightDirective} from "./code-highlight/code-highlight.directive"
     IconComponent,
     NotificationItemComponent,
     NotificationQueueComponent,
-      CodeHighlightDirective
+    CodeHighlightDirective
   ],
   imports: [
     BrowserAnimationsModule,
@@ -25,7 +25,7 @@ import {CodeHighlightDirective} from "./code-highlight/code-highlight.directive"
     IconComponent,
     NotificationItemComponent,
     NotificationQueueComponent,
-      CodeHighlightDirective
+    CodeHighlightDirective
   ],
   providers: [
     NotificationsService
