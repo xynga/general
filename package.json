@@ -1,6 +1,6 @@
 {
   "name": "xynga-general",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Holds all the components classified under the label \"General\"",
   "main": "index.js",
   "scripts": {
