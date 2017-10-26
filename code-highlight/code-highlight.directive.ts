@@ -1,6 +1,5 @@
-const Prism = require('prismjs');
+import * as Prism from 'prismjs'
 
-require('prismjs/components/prism-typescript');
 
 import {Directive, Input, AfterViewInit, ElementRef} from '@angular/core';
 

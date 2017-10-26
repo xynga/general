@@ -6,6 +6,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NotificationsService} from "angular2-notifications/dist";
 import {IconComponent} from "./icon/icon.component";
 import {CommonModule} from "@angular/common";
+import {CodeHighlightDirective} from "./code-highlight/code-highlight.directive";
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {CommonModule} from "@angular/common";
     IconComponent,
     NotificationItemComponent,
     NotificationQueueComponent,
+      CodeHighlightDirective
   ],
   imports: [
     BrowserAnimationsModule,
@@ -23,6 +25,7 @@ import {CommonModule} from "@angular/common";
     IconComponent,
     NotificationItemComponent,
     NotificationQueueComponent,
+      CodeHighlightDirective
   ],
   providers: [
     NotificationsService
