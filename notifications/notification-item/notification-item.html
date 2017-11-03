@@ -14,8 +14,10 @@
   (mouseenter)="onEnter()"
   (mouseleave)="onLeave()">
 
-    <button class="notification-item__close" button-close (click)="remove()">Close</button>
-
+    <div class = "notification-item__close">
+        <icon style = "cursor: pointer" (click)="remove()" icon = "close"></icon>
+    </div>
+    
     <div class="notification-item__content">
       <div *ngIf="!item.html">
         <strong *ngIf="item.title" class="notification-item__title">{{item.title}}: </strong>
