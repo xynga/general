@@ -20,7 +20,7 @@ export class IconComponent implements OnInit {
       'arrow-up-green': '<path d="M.6 4.7L5 .4A1.3 1.3 0 0 1 6 0a1.3 1.3 0 0 1 1 .4l4.5 4.3a1.3 1.3 0 0 1 0 1.8 1.4 1.4 0 0 1-1.9 0L7.4 4.4v9.2A1.3 1.3 0 0 1 6 15a1.3 1.3 0 0 1-1.4-1.3V4.4L2.5 6.5a1.4 1.4 0 0 1-1.9 0 1.3 1.3 0 0 1 0-1.8" fill="#c1d72f"/>',
       'call': '<path d="M5.6 12.1a24.2 24.2 0 0 0 10.3 10.3l3.4-3.4a1.2 1.2 0 0 1 1.6-.3 16.3 16.3 0 0 0 5.6.9 1.5 1.5 0 0 1 1.5 1.6v5.3a1.5 1.5 0 0 1-1.6 1.5A26.4 26.4 0 0 1 0 1.6 1.5 1.5 0 0 1 1.6 0H7a1.5 1.5 0 0 1 1.6 1.6 17.6 17.6 0 0 0 .9 5.6 1.9 1.9 0 0 1-.3 1.6z" fill="#616262"/><path fill="none" d="M0 0h28v28H0z"/>',
       'check': '<path d="M5.2 12.2L1.5 8.6l1.1-1.1 2.6 2.8 7.5-7.5.8 1-8.1 8.4h-.2z" fill="#fff"/>',
-      'chevron-down': '<path d="M0 1.7L8 9l8-7.3L14.2 0 8 5.7 1.8 0z" fill="#c0d82f"/>',
+      'chevron-down-green': '<path d="M0 1.7L8 9l8-7.3L14.2 0 8 5.7 1.8 0z" fill="#c0d82f"/>',
       'chevron-left-blue': '<path d="M4.9 0L0 5l4.9 5L6 8.9 2.2 5 6 1.1z" fill="#266eb3"/>',
       'chevron-left-green': '<path d="M7.3 0L0 8l7.3 8L9 14.2 3.3 8 9 1.8z" fill="#c0d82f"/>',
       'chevron-right-blue': '<path d="M1.1 10L6 5 1.1 0 0 1.1 3.8 5 0 8.9z" fill="#266eb3"/>',

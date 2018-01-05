@@ -1,4 +1,6 @@
 <h1>Icon Component</h1>
 <div style="background-color: #DD4A68">
-<icon icon="plus-white" ></icon>
+  <icon *ngFor="let icon of icons" [icon]="icon" ></icon>
 </div>
+
+<action-alert count="425" icon="conversion" text="THIS IS A TEST" link="link"></action-alert>
