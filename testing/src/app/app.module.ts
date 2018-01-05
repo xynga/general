@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { GeneralModule} from "xynga-general";
+import { GeneralModule} from 'xynga-general';
 
 import { AppComponent } from './app.component';
 
