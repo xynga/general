@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const inlineTemplates = require('gulp-inline-ng2-template');
+const sass = require('node-sass');
 
 const INLINE_TEMPLATES = {
     SRC: [
@@ -7,15 +8,14 @@ const INLINE_TEMPLATES = {
         '!node_modules',
         '!node_modules/**',
         '!inline',
-        '!inline/**',
-        '!graph',
-        '!graph/**'
+        '!inline/**'
     ],
     DIST: './inline',
     CONFIG: {
         base: '.',
         target: 'es6',
-        useRelativePaths: true
+        useRelativePaths: true,
+        styleProcessor: compileSass
     }
 };
 
@@ -24,3 +24,15 @@ gulp.task('inline', () => {
         .pipe(inlineTemplates(INLINE_TEMPLATES.CONFIG))
         .pipe(gulp.dest(INLINE_TEMPLATES.DIST));
 });
+
+gulp.task('svg', () => {
+    return gulp.src('icon/assets/**').pipe(gulp.dest('../dist/inline/assets'));
+});
+
+function compileSass(path, ext, file, callback) {
+    let compiledCss = sass.renderSync({
+        file: path,
+        outputStyle: 'compressed',
+    });
+    callback(null, compiledCss.css);
+}

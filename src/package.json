@@ -5,7 +5,7 @@
   "main": "general/inline/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "gulp inline && ngc"
+    "compile": "gulp inline && gulp svg && ngc"
   },
   "author": "",
   "license": "MIT",
@@ -27,6 +27,7 @@
     "gulp-inline-ng2-template": "^4.0.0",
     "rxjs": "^5.0.1",
     "typescript": "^2.4.2",
+    "node-sass": "^4.7.2",
     "zone.js": "^0.8.4"
   }
 }

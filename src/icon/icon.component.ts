@@ -9,4 +9,8 @@ const SELECTOR = 'icon';
 })
 export class IconComponent {
   @Input() icon: string;
+
+  icons = {
+
+  }
 }
