@@ -1,18 +1,27 @@
 {
   "name": "xynga-general",
-  "version": "1.0.8",
+  "version": "1.0.1",
   "description": "Holds all the components classified under the label \"General\"",
-  "main": "index.js",
+  "main": "dist/inline/index.js",
+  "files": [
+    "dist/inline"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd src && npm run compile",
+    "link-build": "npm link && cd testing && npm link xynga-general",
+    "postversion": "git push",
+    "rebuild": "npm run build && npm start",
+    "setup": "cd src && npm i && cd .. && npm run build && cd testing && npm i && cd .. && npm run link-build",
+    "start": "cd testing && start chrome http://localhost:4200 && ng serve",
+    "test": "npm run start"
   },
-  "author": "",
+  "author": "GradTech V",
   "license": "MIT",
-  "dependencies": {
-    "@angular/animations": "^4.4.6",
-    "@angular/core": "^4.4.6",
-    "@angular/common": "^4.4.6",
-    "@angular/platform-browser": "^4.4.6",
+  "peerDependencies": {
+    "@angular/animations": ">=4.4.6",
+    "@angular/core": ">=4.4.6",
+    "@angular/common": ">=4.4.6",
+    "@angular/platform-browser": ">=4.4.6",
     "angular2-notifications": "^0.7.8",
     "prismjs": "^1.8.3"
   }

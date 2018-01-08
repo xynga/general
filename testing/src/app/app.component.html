@@ -1,0 +1,29 @@
+<h1>Icon Component</h1>
+<div style="background-color: #DD4A68">
+  <icon *ngFor="let icon of icons" [icon]="icon" ></icon>
+</div>
+
+<action-alert count="425" icon="conversion" text="THIS IS A TEST" link="link"></action-alert>
+<div>
+  <button class='btn'  (click)="notificationsService.create(myTitle, message, 'success')">Success Notification</button>
+  <button class='btn'  (click)="notificationsService.create(myTitle, message, 'alert')">Alert Notification</button>
+  <button class='btn'  (click)="notificationsService.create(myTitle, message, 'warn')">Warning Notification</button>
+  <button class='btn'  (click)="notificationsService.create(myTitle, message, 'info')">Info Notification</button>
+
+  <br/><br/>
+
+  <p class="mat-body">Notifications will load here:</p>
+
+  <div class="mat-body">
+    <div>
+      <notification-queue [options]="options" [service]="notificationsService"></notification-queue>
+    </div>
+  </div>
+</div>
+<pre>
+  <code codeHighlight>
+    &lt;div class="sampleClass"&gt;
+    &lt;h1&gt;Some Sample HTML code&lt;/h1&gt;
+    &lt;/div&gt;
+  </code>
+</pre>
