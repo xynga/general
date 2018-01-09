@@ -1,25 +1,7 @@
-<h1>Icon Component</h1>
-<div style="background-color: #DD4A68">
-  <icon *ngFor="let icon of icons" [icon]="icon" ></icon>
-</div>
-
+<h1>Action Alert Component</h1>
 <action-alert count="425" icon="conversion" text="THIS IS A TEST" link="link"></action-alert>
-<div>
-  <button class='btn'  (click)="notificationsService.create(myTitle, message, 'success')">Success Notification</button>
-  <button class='btn'  (click)="notificationsService.create(myTitle, message, 'alert')">Alert Notification</button>
-  <button class='btn'  (click)="notificationsService.create(myTitle, message, 'warn')">Warning Notification</button>
-  <button class='btn'  (click)="notificationsService.create(myTitle, message, 'info')">Info Notification</button>
 
-  <br/><br/>
-
-  <p class="mat-body">Notifications will load here:</p>
-
-  <div class="mat-body">
-    <div>
-      <notification-queue [options]="options" [service]="notificationsService"></notification-queue>
-    </div>
-  </div>
-</div>
+<h1>Code Highlight Directive</h1>
 <pre>
   <code codeHighlight>
     &lt;div class="sampleClass"&gt;
@@ -27,3 +9,31 @@
     &lt;/div&gt;
   </code>
 </pre>
+
+<h1>Icon Component</h1>
+<div *ngFor="let icon of icons" style="display:inline-flex;margin:10px;border:1px solid grey;border-radius:5px;padding:2px;">
+  <h3 style="padding-right:10px;margin:auto 0;">{{icon}}</h3>
+  <div style="background:#DD4A68;display:inline;padding:10px;border:none;border-radius:5px;">
+    <icon [icon]="icon" ></icon>
+  </div>
+  <div style="background:#CCFFFF;display:inline;padding:10px;border:none;border-radius:5px;">
+    <icon [icon]="icon" ></icon>
+  </div>
+</div>
+
+<h1>Notifications Component</h1>
+<div>
+  <button (click)="notificationsService.create(myTitle, message, 'success')">Success Notification</button>
+  <button (click)="notificationsService.create(myTitle, message, 'alert')">Alert Notification</button>
+  <button (click)="notificationsService.create(myTitle, message, 'warn')">Warning Notification</button>
+  <button (click)="notificationsService.create(myTitle, message, 'info')">Info Notification</button>
+
+  <br/>
+
+  <p>Notifications will load here:</p>
+
+  <div style="height:700px;background:#DD4A68;">
+    <notification-queue [options]="options" [service]="notificationsService"></notification-queue>
+  </div>
+
+</div>

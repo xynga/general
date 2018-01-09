@@ -31,6 +31,8 @@ export class AppComponent {
     'edit',
     'flyout-tab-left-blue',
     'flyout-tab-left-white-sm',
+    'flyout-tab-top-white',
+    'help',
     'help-sm',
     'helpful',
     'icon-forapproval',
