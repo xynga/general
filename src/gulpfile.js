@@ -25,10 +25,6 @@ gulp.task('inline', () => {
         .pipe(gulp.dest(INLINE_TEMPLATES.DIST));
 });
 
-gulp.task('svg', () => {
-    return gulp.src('icon/assets/**').pipe(gulp.dest('../dist/inline/assets'));
-});
-
 function compileSass(path, ext, file, callback) {
     let compiledCss = sass.renderSync({
         file: path,
