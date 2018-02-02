@@ -7,8 +7,33 @@ describe('testing App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should create Success Notification', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    page.getSuccessButton().click();
+    var myElement = page.getSuccessNotification();
+    expect(myElement.isPresent()).toBeTruthy();
+  });
+
+  it('should create Alert Notification', () => {
+    page.navigateTo();
+    page.getAlertButton().click();
+    var myElement = page.getAlertNotification();
+    expect(myElement.isPresent()).toBeTruthy();
+  });
+
+
+  it('should create Warning Notification', () => {
+    page.navigateTo();
+    page.getWarningButton().click();
+    var myElement = page.getWarningNotification();
+    expect(myElement.isPresent()).toBeTruthy();
+  });
+
+
+  it('should create Info Notification', () => {
+    page.navigateTo();
+    page.getInfoButton().click();
+    var myElement = page.getInfoNotification();
+    expect(myElement.isPresent()).toBeTruthy();
   });
 });

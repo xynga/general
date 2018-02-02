@@ -821,8 +821,6 @@ describe('Code Highlight Directive', () => {
         expect(codeType).toEqual('typescript');
       });
       dirInstance.ngAfterViewInit();
-
-
     });
   }));
   it('runs ngAfterViewInit correctly with no set codehighlight', async ( () => {
