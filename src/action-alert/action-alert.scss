@@ -107,6 +107,7 @@ $border-alert: 1px solid $accent-alert !default;
     }
 
     .overlay {
+      box-sizing: content-box;
       position: absolute;
       border-radius: 50%;
       border: $action-alert-border;

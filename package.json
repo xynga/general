@@ -23,7 +23,6 @@
     "@angular/core": ">=4.0.0",
     "@angular/common": ">=4.0.0",
     "@angular/platform-browser": ">=4.0.0",
-    "angular2-notifications": "~0.7.8",
     "prismjs": ">=1.8.3"
   },
   "dependencies": {
@@ -32,5 +31,6 @@
   "devDependencies": {
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.1"
+
   }
 }
