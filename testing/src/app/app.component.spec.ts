@@ -3,15 +3,14 @@ import { IconComponent } from 'xynga-general';
 import { ActionAlertComponent } from 'xynga-general';
 import { NotificationItemComponent } from 'xynga-general';
 import { NotificationsService, Notification} from 'angular2-notifications';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventEmitter } from '@angular/core';
 import { NotificationQueueComponent } from 'xynga-general';
-import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs/Observable";
-import {SimpleNotificationsComponent} from "angular2-notifications/dist";
-import { CodeHighlightDirective } from "xynga-general";
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import { CodeHighlightDirective } from 'xynga-general';
 import { MockComponent } from './mock/mock.component';
-import {By} from "@angular/platform-browser";
+import { By } from '@angular/platform-browser';
 
 interface NotificationEvent {
   add?: boolean;
@@ -20,22 +19,20 @@ interface NotificationEvent {
   notification?: Notification;
 }
 
-class MockNotificationsService{
+class MockNotificationsService {
   public emitter: Subject<NotificationEvent> = new Subject<NotificationEvent>();
 
   setWasCalled = false;
 
-  getChangeEmitter(): Observable<any>{
+  getChangeEmitter(): Observable<any> {
     return this.emitter;
   }
 
   set(a: any, b: any): void{
     this.setWasCalled = true;
-    return
+    return;
   }
 }
-
-
 
 describe('Icon Component', () => {
   beforeEach(async(() => {
