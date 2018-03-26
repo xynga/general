@@ -28,10 +28,7 @@ class MockNotificationsService {
     return this.emitter;
   }
 
-  set(a: any, b: any): void{
-    this.setWasCalled = true;
-    return;
-  }
+  set(a: any, b: any) {}
 }
 
 describe('Icon Component', () => {
@@ -491,9 +488,9 @@ describe('Action Alert Component', () => {
     const fixture = TestBed.createComponent(ActionAlertComponent);
     const AAC = fixture.debugElement.componentInstance;
     AAC.count = 135;
-    AAC.text = "LimaOscarLima";
+    AAC.text = 'LimaOscarLima';
     fixture.detectChanges();
-    expect(AAC.title).toEqual("135 LimaOscarLima");
+    expect(AAC.title).toEqual('135 LimaOscarLima');
   }));
 });
 
@@ -524,7 +521,7 @@ describe('Notifications Item Component', () => {
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
     NIC.item.override = true;
-    var spy = spyOn(NIC, 'attachOverrides' ).and.stub();
+    const spy = spyOn(NIC, 'attachOverrides' ).and.stub();
     NIC.ngOnInit();
     expect(spy).toHaveBeenCalled();
   }));
@@ -533,7 +530,7 @@ describe('Notifications Item Component', () => {
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
     NIC.timeOut = 20;
-    var spy = spyOn(NIC, 'startTimeOut' ).and.stub();
+    const spy = spyOn(NIC, 'startTimeOut' ).and.stub();
     NIC.ngOnInit();
     expect(spy).toHaveBeenCalled();
   }));
@@ -546,13 +543,13 @@ describe('Notifications Item Component', () => {
     expect(NIC.safeSvg).toEqual('TEST');
   }));
 
-  it('should set item.state to animate on init', async( () =>{
+  it('should set item.state to animate on init', async( () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
-    NIC.animate = "scale";
+    NIC.animate = 'scale';
     fixture.detectChanges();
-    expect(NIC.item.state).toEqual("scale");
+    expect(NIC.item.state).toEqual('scale');
   }));
   it('must set the steps, speed, and start when the timeOut is set', async( () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
@@ -568,7 +565,7 @@ describe('Notifications Item Component', () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
-    var spy = spyOn(NIC.zone, 'runOutsideAngular').and.stub();
+    const spy = spyOn(NIC.zone, 'runOutsideAngular').and.stub();
     NIC.timeOut = 10;
     NIC.startTimeOut();
     expect(spy).toHaveBeenCalled();
@@ -614,7 +611,7 @@ describe('Notifications Item Component', () => {
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
     NIC.position = 1;
-    var temp = NIC.setPosition();
+    const temp = NIC.setPosition();
     expect(temp).toEqual(90);
   }));
   it('should check item.click.emit is called', async( () => {
@@ -623,7 +620,7 @@ describe('Notifications Item Component', () => {
     NIC.item = new Notification('warn');
     NIC.item.click = new EventEmitter();
     NIC.clickToClose = false;
-    var spy = spyOn(NIC.item.click, 'emit').and.stub();
+    const spy = spyOn(NIC.item.click, 'emit').and.stub();
     NIC.onClick();
     expect(spy).toHaveBeenCalled();
   }));
@@ -633,7 +630,7 @@ describe('Notifications Item Component', () => {
     NIC.item = new Notification('warn');
     NIC.item.click = new EventEmitter();
     NIC.clickToClose = true;
-    var spy = spyOn(NIC, 'remove').and.stub();
+    const spy = spyOn(NIC, 'remove').and.stub();
     NIC.onClick();
     expect(spy).toHaveBeenCalled();
   }));
@@ -642,7 +639,7 @@ describe('Notifications Item Component', () => {
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
     NIC.position = 0;
-    var temp = NIC.setPosition();
+    const temp = NIC.setPosition();
     expect(temp).toEqual(0);
   }));
   it('should emit "This is a test" when onClick() is called', async( () => {
@@ -650,12 +647,12 @@ describe('Notifications Item Component', () => {
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
     NIC.item.click = new EventEmitter();
-    var temp = NIC.item.click.subscribe(
+    NIC.item.click.subscribe(
       (data: any) => {
-        expect(data).toEqual("This is a test");
+        expect(data).toEqual('This is a test');
       }
     );
-    NIC.onClick("This is a test");
+    NIC.onClick('This is a test');
   }));
   it('Set the TimeOut to 34 using the overrides', async ( () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
@@ -672,7 +669,7 @@ describe('Notifications Item Component', () => {
     NIC.item = new Notification('warn');
     NIC.count = 2;
     NIC.steps = 3;
-    var spy = spyOn(NIC.zone, 'run').and.stub();
+    const spy = spyOn(NIC.zone, 'run').and.stub();
     NIC.instance();
     expect(spy).toHaveBeenCalled();
   }));
@@ -684,7 +681,7 @@ describe('Notifications Item Component', () => {
     NIC.steps = 3;
     NIC.stopTime = false;
     NIC.showProgressBar = true;
-    var spy = spyOn(NIC.zone, 'run').and.stub();
+    const spy = spyOn(NIC.zone, 'run').and.stub();
     NIC.instance();
     expect(spy).toHaveBeenCalled();
   }));
@@ -692,14 +689,14 @@ describe('Notifications Item Component', () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
-    NIC.animate = "scale";
+    NIC.animate = 'scale';
     NIC.remove();
-    expect(NIC.item.state).toEqual("scaleOut");
+    expect(NIC.item.state).toEqual('scaleOut');
   }));
   it('Calls the NotificationsService.set in the remove function', async( () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
     const NIC = fixture.debugElement.componentInstance;
-    var spy = spyOn(NIC.notificationService, 'set').and.stub();
+    const spy = spyOn(NIC.notificationService, 'set').and.stub();
     NIC.remove();
     expect(spy).toHaveBeenCalled();
   }));
@@ -735,7 +732,7 @@ describe('Notifications Queue Component', () => {
   it('resets the notifications to empty if cleanAll command is sent', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.notifications = ['cat','dog','rat'];
+    NQC.notifications = ['cat', 'dog', 'rat'];
     NQC.service = new MockNotificationsService();
     NQC.ngOnInit();
     NQC.service.emitter.next({command: 'cleanAll'});
@@ -745,7 +742,7 @@ describe('Notifications Queue Component', () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
     NQC.service = new MockNotificationsService();
-    var spy = spyOn(NQC, 'cleanSingle').and.stub();
+    const spy = spyOn(NQC, 'cleanSingle').and.stub();
     NQC.ngOnInit();
     NQC.service.emitter.next({command: 'clean'});
     expect(spy).toHaveBeenCalled();
@@ -754,7 +751,7 @@ describe('Notifications Queue Component', () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
     NQC.service = new MockNotificationsService();
-    var spy = spyOn(NQC, 'defaultBehavior').and.stub();
+    const spy = spyOn(NQC, 'defaultBehavior').and.stub();
     NQC.ngOnInit();
     NQC.service.emitter.next({command: 'set'});
     expect(spy).toHaveBeenCalled();
@@ -763,7 +760,7 @@ describe('Notifications Queue Component', () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
     NQC.service = new MockNotificationsService();
-    var spy = spyOn(NQC, 'add').and.stub();
+    const spy = spyOn(NQC, 'add').and.stub();
     NQC.ngOnInit();
     NQC.service.emitter.next({command: 'set', add: 'newNotification'});
     expect(spy).toHaveBeenCalled();
@@ -772,17 +769,9 @@ describe('Notifications Queue Component', () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
     NQC.service = new MockNotificationsService();
-    var spy = spyOn(NQC, 'defaultBehavior').and.stub();
+    const spy = spyOn(NQC, 'defaultBehavior').and.stub();
     NQC.ngOnInit();
     NQC.service.emitter.next({command: 'WadeWilson'});
-    expect(spy).toHaveBeenCalled();
-  }));
-  it('calls the set command on service when item close is called', async( () => {
-    const fixture = TestBed.createComponent(NotificationQueueComponent);
-    const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
-    var spy = spyOn(NQC.service, 'set').and.stub();
-    NQC.onItemClose();
     expect(spy).toHaveBeenCalled();
   }));
   it('', async( () => {
@@ -798,7 +787,7 @@ describe('Code Highlight Directive', () => {
         CodeHighlightDirective
       ]
     }).compileComponents();
-    var Prism = require('prismjs');
+    const Prism = require('prismjs');
   }));
   it('runs all options for CodeHighlightDirective', async ( () => {
     TestBed.compileComponents().then(() => {
@@ -813,8 +802,8 @@ describe('Code Highlight Directive', () => {
       const codeDir = fixture.debugElement.query(By.directive(CodeHighlightDirective));
       const dirInstance = codeDir.injector.get(CodeHighlightDirective);
       dirInstance.codeHighlight = 'typescript';
-      var spy = jasmine.createSpy('ngAfterViewInit').and.callFake(function (){
-        var codeType = this.codeHighlight ? this.codeHighlight : 'markup';
+      const spy = jasmine.createSpy('ngAfterViewInit').and.callFake(function (){
+        const codeType = this.codeHighlight ? this.codeHighlight : 'markup';
         expect(codeType).toEqual('typescript');
       });
       dirInstance.ngAfterViewInit();
@@ -825,13 +814,11 @@ describe('Code Highlight Directive', () => {
       const fixture = TestBed.createComponent(MockComponent);
       const codeDir = fixture.debugElement.query(By.directive(CodeHighlightDirective));
       const dirInstance = codeDir.injector.get(CodeHighlightDirective);
-      var spy = jasmine.createSpy('ngAfterViewInit').and.callFake(function (){
-        var codeType = this.codeHighlight ? this.codeHighlight : 'markup';
+      const spy = jasmine.createSpy('ngAfterViewInit').and.callFake(function (){
+        const codeType = this.codeHighlight ? this.codeHighlight : 'markup';
         expect(codeType).toEqual('markup');
       });
       dirInstance.ngAfterViewInit();
-
-
     });
   }));
 });

@@ -24,9 +24,7 @@
     "@angular/core": ">=4.0.0",
     "@angular/common": ">=4.0.0",
     "@angular/platform-browser": ">=4.0.0",
+    "angular2-notifications": "^0.9.7",
     "prismjs": ">=1.8.3"
-  },
-  "dependencies": {
-    "angular2-notifications": "^0.9.7"
   }
 }
