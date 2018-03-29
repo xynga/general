@@ -3,15 +3,14 @@ import { IconComponent } from 'xynga-general';
 import { ActionAlertComponent } from 'xynga-general';
 import { NotificationItemComponent } from 'xynga-general';
 import { NotificationsService, Notification} from 'angular2-notifications';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { EventEmitter } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Component, EventEmitter, ViewChild } from '@angular/core';
 import { NotificationQueueComponent } from 'xynga-general';
-import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs/Observable";
-import {SimpleNotificationsComponent} from "angular2-notifications/dist";
-import { CodeHighlightDirective } from "xynga-general";
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import { CodeHighlightDirective } from 'xynga-general';
 import { MockComponent } from './mock/mock.component';
-import {By} from "@angular/platform-browser";
+import { By } from '@angular/platform-browser';
 
 interface NotificationEvent {
   add?: boolean;
@@ -20,22 +19,31 @@ interface NotificationEvent {
   notification?: Notification;
 }
 
-class MockNotificationsService{
+class MockNotificationsService {
   public emitter: Subject<NotificationEvent> = new Subject<NotificationEvent>();
 
   setWasCalled = false;
 
-  getChangeEmitter(): Observable<any>{
+  getChangeEmitter(): Observable<any> {
     return this.emitter;
   }
 
-  set(a: any, b: any): void{
-    this.setWasCalled = true;
-    return
-  }
+  set(a: any, b: any) {}
 }
 
 
+// NotificationQueueTestComponent: used to test the input to
+// NotificationQueueComponent, "localService" aliased as "service"
+@Component({
+  selector: 'my-nqtc',
+  template: '<notification-queue [service]="mockService"></notification-queue>'
+})
+export class NotificationQueueTestComponent {
+  @ViewChild(NotificationQueueComponent)
+  public NQC: NotificationQueueComponent;
+
+  mockService = new MockNotificationsService();
+}
 
 describe('Icon Component', () => {
   beforeEach(async(() => {
@@ -494,9 +502,9 @@ describe('Action Alert Component', () => {
     const fixture = TestBed.createComponent(ActionAlertComponent);
     const AAC = fixture.debugElement.componentInstance;
     AAC.count = 135;
-    AAC.text = "LimaOscarLima";
+    AAC.text = 'LimaOscarLima';
     fixture.detectChanges();
-    expect(AAC.title).toEqual("135 LimaOscarLima");
+    expect(AAC.title).toEqual('135 LimaOscarLima');
   }));
 });
 
@@ -527,7 +535,7 @@ describe('Notifications Item Component', () => {
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
     NIC.item.override = true;
-    var spy = spyOn(NIC, 'attachOverrides' ).and.stub();
+    const spy = spyOn(NIC, 'attachOverrides' ).and.stub();
     NIC.ngOnInit();
     expect(spy).toHaveBeenCalled();
   }));
@@ -536,7 +544,7 @@ describe('Notifications Item Component', () => {
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
     NIC.timeOut = 20;
-    var spy = spyOn(NIC, 'startTimeOut' ).and.stub();
+    const spy = spyOn(NIC, 'startTimeOut' ).and.stub();
     NIC.ngOnInit();
     expect(spy).toHaveBeenCalled();
   }));
@@ -549,13 +557,13 @@ describe('Notifications Item Component', () => {
     expect(NIC.safeSvg).toEqual('TEST');
   }));
 
-  it('should set item.state to animate on init', async( () =>{
+  it('should set item.state to animate on init', async( () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
-    NIC.animate = "scale";
+    NIC.animate = 'scale';
     fixture.detectChanges();
-    expect(NIC.item.state).toEqual("scale");
+    expect(NIC.item.state).toEqual('scale');
   }));
   it('must set the steps, speed, and start when the timeOut is set', async( () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
@@ -571,7 +579,7 @@ describe('Notifications Item Component', () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
-    var spy = spyOn(NIC.zone, 'runOutsideAngular').and.stub();
+    const spy = spyOn(NIC.zone, 'runOutsideAngular').and.stub();
     NIC.timeOut = 10;
     NIC.startTimeOut();
     expect(spy).toHaveBeenCalled();
@@ -617,7 +625,7 @@ describe('Notifications Item Component', () => {
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
     NIC.position = 1;
-    var temp = NIC.setPosition();
+    const temp = NIC.setPosition();
     expect(temp).toEqual(90);
   }));
   it('should check item.click.emit is called', async( () => {
@@ -626,7 +634,7 @@ describe('Notifications Item Component', () => {
     NIC.item = new Notification('warn');
     NIC.item.click = new EventEmitter();
     NIC.clickToClose = false;
-    var spy = spyOn(NIC.item.click, 'emit').and.stub();
+    const spy = spyOn(NIC.item.click, 'emit').and.stub();
     NIC.onClick();
     expect(spy).toHaveBeenCalled();
   }));
@@ -636,7 +644,7 @@ describe('Notifications Item Component', () => {
     NIC.item = new Notification('warn');
     NIC.item.click = new EventEmitter();
     NIC.clickToClose = true;
-    var spy = spyOn(NIC, 'remove').and.stub();
+    const spy = spyOn(NIC, 'remove').and.stub();
     NIC.onClick();
     expect(spy).toHaveBeenCalled();
   }));
@@ -645,7 +653,7 @@ describe('Notifications Item Component', () => {
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
     NIC.position = 0;
-    var temp = NIC.setPosition();
+    const temp = NIC.setPosition();
     expect(temp).toEqual(0);
   }));
   it('should emit "This is a test" when onClick() is called', async( () => {
@@ -653,12 +661,12 @@ describe('Notifications Item Component', () => {
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
     NIC.item.click = new EventEmitter();
-    var temp = NIC.item.click.subscribe(
+    NIC.item.click.subscribe(
       (data: any) => {
-        expect(data).toEqual("This is a test");
+        expect(data).toEqual('This is a test');
       }
     );
-    NIC.onClick("This is a test");
+    NIC.onClick('This is a test');
   }));
   it('Set the TimeOut to 34 using the overrides', async ( () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
@@ -675,7 +683,7 @@ describe('Notifications Item Component', () => {
     NIC.item = new Notification('warn');
     NIC.count = 2;
     NIC.steps = 3;
-    var spy = spyOn(NIC.zone, 'run').and.stub();
+    const spy = spyOn(NIC.zone, 'run').and.stub();
     NIC.instance();
     expect(spy).toHaveBeenCalled();
   }));
@@ -687,7 +695,7 @@ describe('Notifications Item Component', () => {
     NIC.steps = 3;
     NIC.stopTime = false;
     NIC.showProgressBar = true;
-    var spy = spyOn(NIC.zone, 'run').and.stub();
+    const spy = spyOn(NIC.zone, 'run').and.stub();
     NIC.instance();
     expect(spy).toHaveBeenCalled();
   }));
@@ -695,14 +703,14 @@ describe('Notifications Item Component', () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
     const NIC = fixture.debugElement.componentInstance;
     NIC.item = new Notification('warn');
-    NIC.animate = "scale";
+    NIC.animate = 'scale';
     NIC.remove();
-    expect(NIC.item.state).toEqual("scaleOut");
+    expect(NIC.item.state).toEqual('scaleOut');
   }));
   it('Calls the NotificationsService.set in the remove function', async( () => {
     const fixture = TestBed.createComponent(NotificationItemComponent);
     const NIC = fixture.debugElement.componentInstance;
-    var spy = spyOn(NIC.notificationService, 'set').and.stub();
+    const spy = spyOn(NIC.notificationService, 'set').and.stub();
     NIC.remove();
     expect(spy).toHaveBeenCalled();
   }));
@@ -713,7 +721,8 @@ describe('Notifications Queue Component', () => {
       declarations: [
         NotificationQueueComponent,
         NotificationItemComponent,
-        IconComponent
+        IconComponent,
+        NotificationQueueTestComponent
       ],
       providers: [
         {provide: NotificationsService, useClass: MockNotificationsService}
@@ -728,69 +737,66 @@ describe('Notifications Queue Component', () => {
     const NQC = fixture.debugElement.componentInstance;
     expect(NQC).toBeTruthy();
   }));
+  it('should contain localService', async( () => {
+    // Creates a Test Component that contains a NotificationQueueComponent
+    // and passes a (Mock)NotificationsService as input to test the
+    // presence of the localService property on the NotificationQueueComp.
+    const fixture = TestBed.createComponent(NotificationQueueTestComponent);
+    const NQTC = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+    expect(NQTC.NQC.localService).toBeTruthy();
+  }));
   it('Import the notification service succesfully', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
+    NQC.localService = new MockNotificationsService();
     NQC.ngOnInit();
-    expect(NQC.service).toBeTruthy();
+    expect(NQC.localService).toBeTruthy();
   }));
   it('resets the notifications to empty if cleanAll command is sent', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.notifications = ['cat','dog','rat'];
-    NQC.service = new MockNotificationsService();
+    NQC.notifications = ['cat', 'dog', 'rat'];
+    NQC.localService = new MockNotificationsService();
     NQC.ngOnInit();
-    NQC.service.emitter.next({command: 'cleanAll'});
+    NQC.localService.emitter.next({command: 'cleanAll'});
     expect(NQC.notifications).toEqual([]);
   }));
   it('calls the cleanSingle command', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
-    var spy = spyOn(NQC, 'cleanSingle').and.stub();
+    NQC.localService = new MockNotificationsService();
+    const spy = spyOn(NQC, 'cleanSingle').and.stub();
     NQC.ngOnInit();
-    NQC.service.emitter.next({command: 'clean'});
+    NQC.localService.emitter.next({command: 'clean'});
     expect(spy).toHaveBeenCalled();
   }));
   it('calls the calls defaultBehavior if set command is given with no add', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
-    var spy = spyOn(NQC, 'defaultBehavior').and.stub();
+    NQC.localService = new MockNotificationsService();
+    const spy = spyOn(NQC, 'defaultBehavior').and.stub();
     NQC.ngOnInit();
-    NQC.service.emitter.next({command: 'set'});
+    NQC.localService.emitter.next({command: 'set'});
     expect(spy).toHaveBeenCalled();
   }));
   it('calls add if set command is given with add', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
-    var spy = spyOn(NQC, 'add').and.stub();
+    NQC.localService = new MockNotificationsService();
+    const spy = spyOn(NQC, 'add').and.stub();
     NQC.ngOnInit();
-    NQC.service.emitter.next({command: 'set', add: 'newNotification'});
+    NQC.localService.emitter.next({command: 'set', add: 'newNotification'});
     expect(spy).toHaveBeenCalled();
   }));
   it('calls defaultBehavior if invalid command is given', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
-    var spy = spyOn(NQC, 'defaultBehavior').and.stub();
+    NQC.localService = new MockNotificationsService();
+    const spy = spyOn(NQC, 'defaultBehavior').and.stub();
     NQC.ngOnInit();
-    NQC.service.emitter.next({command: 'WadeWilson'});
+    NQC.localService.emitter.next({command: 'WadeWilson'});
     expect(spy).toHaveBeenCalled();
-  }));
-  it('calls the set command on service when item close is called', async( () => {
-    const fixture = TestBed.createComponent(NotificationQueueComponent);
-    const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
-    var spy = spyOn(NQC.service, 'set').and.stub();
-    NQC.onItemClose();
-    expect(spy).toHaveBeenCalled();
-  }));
-  it('', async( () => {
-    const fixture = TestBed.createComponent(NotificationQueueComponent);
-    const NQC = fixture.debugElement.componentInstance;
   }));
 });
 describe('Code Highlight Directive', () => {
@@ -801,7 +807,7 @@ describe('Code Highlight Directive', () => {
         CodeHighlightDirective
       ]
     }).compileComponents();
-    var Prism = require('prismjs');
+    const Prism = require('prismjs');
   }));
   it('runs all options for CodeHighlightDirective', async ( () => {
     TestBed.compileComponents().then(() => {
@@ -816,8 +822,8 @@ describe('Code Highlight Directive', () => {
       const codeDir = fixture.debugElement.query(By.directive(CodeHighlightDirective));
       const dirInstance = codeDir.injector.get(CodeHighlightDirective);
       dirInstance.codeHighlight = 'typescript';
-      var spy = jasmine.createSpy('ngAfterViewInit').and.callFake(function (){
-        var codeType = this.codeHighlight ? this.codeHighlight : 'markup';
+      const spy = jasmine.createSpy('ngAfterViewInit').and.callFake(function (){
+        const codeType = this.codeHighlight ? this.codeHighlight : 'markup';
         expect(codeType).toEqual('typescript');
       });
       dirInstance.ngAfterViewInit();
@@ -828,13 +834,11 @@ describe('Code Highlight Directive', () => {
       const fixture = TestBed.createComponent(MockComponent);
       const codeDir = fixture.debugElement.query(By.directive(CodeHighlightDirective));
       const dirInstance = codeDir.injector.get(CodeHighlightDirective);
-      var spy = jasmine.createSpy('ngAfterViewInit').and.callFake(function (){
-        var codeType = this.codeHighlight ? this.codeHighlight : 'markup';
+      const spy = jasmine.createSpy('ngAfterViewInit').and.callFake(function (){
+        const codeType = this.codeHighlight ? this.codeHighlight : 'markup';
         expect(codeType).toEqual('markup');
       });
       dirInstance.ngAfterViewInit();
-
-
     });
   }));
 });
