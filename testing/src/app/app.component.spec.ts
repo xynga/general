@@ -725,53 +725,53 @@ describe('Notifications Queue Component', () => {
   it('Import the notification service succesfully', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
+    NQC.localService = new MockNotificationsService();
     NQC.ngOnInit();
-    expect(NQC.service).toBeTruthy();
+    expect(NQC.localService).toBeTruthy();
   }));
   it('resets the notifications to empty if cleanAll command is sent', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
     NQC.notifications = ['cat', 'dog', 'rat'];
-    NQC.service = new MockNotificationsService();
+    NQC.localService = new MockNotificationsService();
     NQC.ngOnInit();
-    NQC.service.emitter.next({command: 'cleanAll'});
+    NQC.localService.emitter.next({command: 'cleanAll'});
     expect(NQC.notifications).toEqual([]);
   }));
   it('calls the cleanSingle command', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
+    NQC.localService = new MockNotificationsService();
     const spy = spyOn(NQC, 'cleanSingle').and.stub();
     NQC.ngOnInit();
-    NQC.service.emitter.next({command: 'clean'});
+    NQC.localService.emitter.next({command: 'clean'});
     expect(spy).toHaveBeenCalled();
   }));
   it('calls the calls defaultBehavior if set command is given with no add', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
+    NQC.localService = new MockNotificationsService();
     const spy = spyOn(NQC, 'defaultBehavior').and.stub();
     NQC.ngOnInit();
-    NQC.service.emitter.next({command: 'set'});
+    NQC.localService.emitter.next({command: 'set'});
     expect(spy).toHaveBeenCalled();
   }));
   it('calls add if set command is given with add', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
+    NQC.localService = new MockNotificationsService();
     const spy = spyOn(NQC, 'add').and.stub();
     NQC.ngOnInit();
-    NQC.service.emitter.next({command: 'set', add: 'newNotification'});
+    NQC.localService.emitter.next({command: 'set', add: 'newNotification'});
     expect(spy).toHaveBeenCalled();
   }));
   it('calls defaultBehavior if invalid command is given', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
-    NQC.service = new MockNotificationsService();
+    NQC.localService = new MockNotificationsService();
     const spy = spyOn(NQC, 'defaultBehavior').and.stub();
     NQC.ngOnInit();
-    NQC.service.emitter.next({command: 'WadeWilson'});
+    NQC.localService.emitter.next({command: 'WadeWilson'});
     expect(spy).toHaveBeenCalled();
   }));
   it('', async( () => {
