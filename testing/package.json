@@ -25,7 +25,7 @@
     "angular2-notifications": "^0.9.7",
     "core-js": "^2.4.1",
     "karma-coverage": "^1.1.1",
-    "prismjs": "^1.8.3",
+    "prismjs": "^1.13.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
