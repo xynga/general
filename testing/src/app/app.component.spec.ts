@@ -4,7 +4,7 @@ import { ActionAlertComponent } from 'xynga-general';
 import { NotificationItemComponent } from 'xynga-general';
 import { NotificationsService, Notification} from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EventEmitter } from '@angular/core';
+import { Component, EventEmitter, ViewChild } from '@angular/core';
 import { NotificationQueueComponent } from 'xynga-general';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
@@ -29,6 +29,20 @@ class MockNotificationsService {
   }
 
   set(a: any, b: any) {}
+}
+
+
+// NotificationQueueTestComponent: used to test the input to
+// NotificationQueueComponent, "localService" aliased as "service"
+@Component({
+  selector: 'my-nqtc',
+  template: '<notification-queue [service]="mockService"></notification-queue>'
+})
+export class NotificationQueueTestComponent {
+  @ViewChild(NotificationQueueComponent)
+  public NQC: NotificationQueueComponent;
+
+  mockService = new MockNotificationsService();
 }
 
 describe('Icon Component', () => {
@@ -707,7 +721,8 @@ describe('Notifications Queue Component', () => {
       declarations: [
         NotificationQueueComponent,
         NotificationItemComponent,
-        IconComponent
+        IconComponent,
+        NotificationQueueTestComponent
       ],
       providers: [
         {provide: NotificationsService, useClass: MockNotificationsService}
@@ -721,6 +736,15 @@ describe('Notifications Queue Component', () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
     const NQC = fixture.debugElement.componentInstance;
     expect(NQC).toBeTruthy();
+  }));
+  it('should contain localService', async( () => {
+    // Creates a Test Component that contains a NotificationQueueComponent
+    // and passes a (Mock)NotificationsService as input to test the
+    // presence of the localService property on the NotificationQueueComp.
+    const fixture = TestBed.createComponent(NotificationQueueTestComponent);
+    const NQTC = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+    expect(NQTC.NQC.localService).toBeTruthy();
   }));
   it('Import the notification service succesfully', async( () => {
     const fixture = TestBed.createComponent(NotificationQueueComponent);
@@ -773,10 +797,6 @@ describe('Notifications Queue Component', () => {
     NQC.ngOnInit();
     NQC.localService.emitter.next({command: 'WadeWilson'});
     expect(spy).toHaveBeenCalled();
-  }));
-  it('', async( () => {
-    const fixture = TestBed.createComponent(NotificationQueueComponent);
-    const NQC = fixture.debugElement.componentInstance;
   }));
 });
 describe('Code Highlight Directive', () => {
