@@ -5,7 +5,8 @@ const sass = require('node-sass');
 
 const INLINE_TEMPLATES = {
     SRC: [
-        './src/general/**/*.ts'
+      './src/general/**/*.ts',
+      '!./src/general/**/*.spec.ts'
     ],
     DIST: './dist',
     CONFIG: {

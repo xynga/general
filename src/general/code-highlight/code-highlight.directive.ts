@@ -1,14 +1,11 @@
-const Prism = require('prismjs');
-
-require('prismjs/components/prism-typescript');
-
-import {Directive, Input, AfterViewInit, ElementRef} from '@angular/core';
+import { Directive, Input, AfterViewInit, ElementRef } from '@angular/core';
+import * as Prism from 'prismjs';
+import 'prismjs/components/prism-typescript';
 
 const SELECTOR: string = '[codeHighlight]';
 
 @Directive({
-  selector: SELECTOR,
-
+  selector: SELECTOR
 })
 export class CodeHighlightDirective implements AfterViewInit {
   @Input() codeHighlight: string = 'markup';
@@ -19,9 +16,6 @@ export class CodeHighlightDirective implements AfterViewInit {
   ngAfterViewInit(): void {
     let codeType = this.codeHighlight ? this.codeHighlight : 'markup';
     let htmlString = this.elem.nativeElement.textContent;
-
-    const prismCode = Prism.highlight(htmlString, Prism.languages[codeType]);
-    this.elem.nativeElement.innerHTML = prismCode;
-
+    this.elem.nativeElement.innerHTML = Prism.highlight(htmlString, Prism.languages[codeType]);
   }
 }
