@@ -12,6 +12,7 @@ export class IconComponent implements OnInit {
 
   @ViewChild('svg') svg: ElementRef;
 
+  /* tslint:disable:max-line-length */
   icons: any = {
       'alert-lg': '<defs><clipPath id="aaa"><path fill="none" d="M.3 0h22.4v20H.3z"></path></clipPath></defs><g clip-path="url(#aaa)"><path d="M22.5 17.9L12.7.7a1.4 1.4 0 0 0-2.5 0L.5 17.9A1.4 1.4 0 0 0 1.7 20h19.6a1.4 1.4 0 0 0 1.2-2.1m-9.6-.7h-2.8v-2.9H13v2.9zm0-4.3h-2.8V7.1H13v5.7z" fill="#d1383b"></path></g>',
       'alert-sm': '<defs><clipPath id="aba"><path fill="none" d="M.1 0h16.8v15H.1z"></path></clipPath></defs><g clip-path="url(#aba)"><path d="M16.8 13.4L9.4.5a1.1 1.1 0 0 0-1.8 0L.2 13.4a1.1 1.1 0 0 0 1 1.6h14.6a1.1 1.1 0 0 0 .9-1.6m-7.2-.5H7.4v-2.2h2.2v2.1zm0-3.2H7.4V5.3h2.2v4.3z" fill="#d1383b"></path></g>',
@@ -65,7 +66,7 @@ export class IconComponent implements OnInit {
       'star-hollow': '<path fill="#c0d82f" d="M17.766 15.687l4.781-4.641-6.594-.969L13 4.108l-2.953 5.969-6.594.969 4.781 4.641-1.141 6.578 5.906-3.109 5.891 3.109zM26 10.109c0 .281-.203.547-.406.75l-5.672 5.531 1.344 7.812c.016.109.016.203.016.313 0 .422-.187.781-.641.781a1.27 1.27 0 0 1-.625-.187L13 21.422l-7.016 3.687c-.203.109-.406.187-.625.187-.453 0-.656-.375-.656-.781 0-.109.016-.203.031-.313l1.344-7.812L.39 10.859c-.187-.203-.391-.469-.391-.75 0-.469.484-.656.875-.719l7.844-1.141 3.516-7.109c.141-.297.406-.641.766-.641s.625.344.766.641l3.516 7.109 7.844 1.141c.375.063.875.25.875.719z"></path>'
   };
 
-      ngOnInit() {
+  ngOnInit() {
     this.svg.nativeElement.innerHTML = this.icons[this.icon];
   }
 
