@@ -5,7 +5,7 @@
   "author": "GradTech V",
   "license": "MIT",
   "scripts": {
-    "start": "echo If you are trying to serve the sandbox application for this library, use \"npm run sandbox\"",
+    "start": "npm run sandbox",
     "sandbox": "ng serve",
     "build": "gulp inline && ngc -p \"./tsconfig.module.json\" && gulp cleanup",
     "test": "ng test --watch=false --code-coverage",
