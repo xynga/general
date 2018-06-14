@@ -3,7 +3,7 @@ import { Component, ViewEncapsulation, OnInit, Input, ChangeDetectorRef, OnDestr
 import {SimpleNotificationsComponent, NotificationsService, Notification} from 'angular2-notifications';
 import { Subscription } from 'rxjs/Subscription';
 
-const SELECTOR: string = 'notification-queue';
+const SELECTOR = 'notification-queue';
 
 @Component({
   selector: SELECTOR,
@@ -50,9 +50,9 @@ export class NotificationQueueComponent extends SimpleNotificationsComponent imp
 
             case 'set':
               if (item.add) {
-                this.add(item.notification!)
+                this.add(item.notification!);
               } else {
-                this.defaultBehavior(item)
+                this.defaultBehavior(item);
               }
               break;
 
