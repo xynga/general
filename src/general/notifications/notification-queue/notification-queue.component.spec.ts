@@ -1,11 +1,12 @@
 import { Observable } from 'rxjs/Observable';
-import { Component, ViewChild } from '@angular/core';
+import { Component, NgModule, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Notification, NotificationsService } from 'angular2-notifications';
 import { async, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconComponent, NotificationItemComponent } from '../..';
 import { NotificationQueueComponent } from './notification-queue.component';
+import { GeneralModule } from '../../general.module';
 
 export interface NotificationEvent {
   add?: boolean;
@@ -26,11 +27,10 @@ export class MockNotificationsService {
   set(a: any, b: any) {}
 }
 
-
 // NotificationQueueTestComponent: used to test the input to
 // NotificationQueueComponent, "localService" aliased as "service"
 @Component({
-  selector: 'my-nqtc',
+  selector: 'app-nqtc',
   template: '<notification-queue [service]="mockService"></notification-queue>'
 })
 export class NotificationQueueTestComponent {
@@ -39,6 +39,15 @@ export class NotificationQueueTestComponent {
 
   mockService = new MockNotificationsService();
 }
+
+@NgModule({
+  declarations: [
+    NotificationQueueTestComponent
+  ],
+  imports: [
+    GeneralModule
+  ]
+}) export class FakeModule {}
 
 describe('Notifications Queue Component', () => {
   beforeEach(async(() => {

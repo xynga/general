@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-const SELECTOR: string = 'action-alert';
+const SELECTOR = 'action-alert';
 
 @Component({
   selector: SELECTOR,

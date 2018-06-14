@@ -3,7 +3,7 @@ import {trigger, state, style, transition, animate} from '@angular/animations';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {NotificationsService, Notification} from 'angular2-notifications';
 
-const SELECTOR: string = 'notification-item';
+const SELECTOR = 'notification-item';
 
 @Component({
   selector: SELECTOR,
@@ -175,9 +175,9 @@ export class NotificationItemComponent implements OnInit, OnDestroy {
       this.item.state = this.animate + 'Out';
       this.zone.runOutsideAngular(() => {
         setTimeout(() => {
-          this.zone.run(() => this.onClose.emit(this.item))
+          this.zone.run(() => this.onClose.emit(this.item));
         }, 310);
-      })
+      });
     } else {
       this.notificationService.set(this.item, false);
     }
@@ -187,12 +187,15 @@ export class NotificationItemComponent implements OnInit, OnDestroy {
     this.zone.runOutsideAngular(() => {
       this.zone.run(() => this.diff = (new Date().getTime() - this.start) - (this.count * this.speed));
 
-      if (this.count++ === this.steps) this.zone.run(() => this.remove());
-      else if (!this.stopTime) {
-        if (this.showProgressBar) this.zone.run(() => this.progressWidth += 100 / this.steps);
+      if (this.count++ === this.steps) {
+        this.zone.run(() => this.remove());
+      } else if (!this.stopTime) {
+        if (this.showProgressBar) {
+          this.zone.run(() => this.progressWidth += 100 / this.steps);
+        }
 
         this.timer = setTimeout(this.instance, (this.speed - this.diff));
       }
-    })
-  };
+    });
+  }
 }

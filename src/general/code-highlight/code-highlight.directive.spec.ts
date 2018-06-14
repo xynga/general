@@ -1,13 +1,23 @@
 import { async, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CodeHighlightDirective } from './code-highlight.directive';
+import { GeneralModule } from '../general.module';
 
 @Component({
-  selector: 'mock-component',
+  selector: 'app-mock-component',
   template: '<code codeHighlight>WELCOME TO CODE</code>'
 })
 export class MockComponent {}
+
+@NgModule({
+  declarations: [
+    MockComponent
+  ],
+  imports: [
+    GeneralModule
+  ]
+}) export class FakeModule {}
 
 describe('Code Highlight Directive', () => {
   beforeEach(async(() => {

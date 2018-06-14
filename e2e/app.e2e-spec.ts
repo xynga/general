@@ -10,14 +10,14 @@ describe('testing App', () => {
   it('should create Success Notification', () => {
     page.navigateTo();
     page.getSuccessButton().click();
-    var myElement = page.getSuccessNotification();
+    const myElement = page.getSuccessNotification();
     expect(myElement.isPresent()).toBeTruthy();
   });
 
   it('should create Alert Notification', () => {
     page.navigateTo();
     page.getAlertButton().click();
-    var myElement = page.getAlertNotification();
+    const myElement = page.getAlertNotification();
     expect(myElement.isPresent()).toBeTruthy();
   });
 
@@ -25,7 +25,7 @@ describe('testing App', () => {
   it('should create Warning Notification', () => {
     page.navigateTo();
     page.getWarningButton().click();
-    var myElement = page.getWarningNotification();
+    const myElement = page.getWarningNotification();
     expect(myElement.isPresent()).toBeTruthy();
   });
 
@@ -33,7 +33,7 @@ describe('testing App', () => {
   it('should create Info Notification', () => {
     page.navigateTo();
     page.getInfoButton().click();
-    var myElement = page.getInfoNotification();
+    const myElement = page.getInfoNotification();
     expect(myElement.isPresent()).toBeTruthy();
   });
 });
